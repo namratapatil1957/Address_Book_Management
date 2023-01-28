@@ -98,7 +98,7 @@ public class address_Book {
 		String action;
 		do {
 			System.out.println(" \n Enter what action you want to perform: ");
-			System.out.println(" \n 1. Add  \n 2. Edit  \n 3. Exit");
+			System.out.println(" \n 1. Add  \n 2. Edit \n 3. Delete \n 4. Exit");
 			action = sc.next();
 			
 			switch (action) {
@@ -110,7 +110,11 @@ public class address_Book {
 			case "edit":
 				person.edit();
 				break;
-			
+				
+			case "delete":
+				person.delete();
+				break;
+				
 			case "exit":
 				return;
 			
