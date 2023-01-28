@@ -4,14 +4,17 @@ import java.util.*;
 public class contact_Person extends address_Book{
 	
 	Scanner sc = new Scanner(System.in);
-	int n =1;
-	ArrayList<address_Book> addressbook = new ArrayList<>();
+
+	ArrayList <address_Book> list = new ArrayList<>();
+
+	int i;
 	
+	// To add the contact
 	void add(){
 		
 		contact_Person person = new contact_Person();
 		
-		for (int i = 0; i < n; i++) {
+		
 			System.out.println(" Enter the first name of the person: ");
 			String fname = sc.next();
 			person.setFname(fname);
@@ -44,32 +47,34 @@ public class contact_Person extends address_Book{
 			String email = sc.next();
 			person.setEmail(email);
 		
-			arr[i] = person;
-			for (int j = 0; j < arr.length; j++) {
-				if (arr[j] == null)
-					break;
-				System.out.println(arr[i]);
-			}	
-		}
+			list.add(person);
+			
+			System.out.println(list);
 	}
 	
+	
+	// To edit the contact
 	void edit() {
 		
-		contact_Person person = new contact_Person();
-
-		System.out.println(" Enter the first name of the person: ");
-		String name = sc.next();
-		person.setFname(name);
-		
-		if(name.equals(person.getFname())) {
+		address_Book person = list.get(i);
 			
-		    System.out.println("Enter the number for editing: ");
-		    System.out.println(" 1: Last name /n 2:Address /n 3:City /n 4:State /n 5:Phone_no /n 6:Zip ");
-		    int option = sc.nextInt();	        
-		        
-		    for (int i = 0; i < n; i++) {       	
-		    	
-		    	switch (option) {
+		System.out.println("\n Enter the first name of the person: ");			
+		String name = sc.next();			
+			
+		Iterator iterator = list.iterator();			
+			
+		while (iterator.hasNext()) {
+			
+			System.out.println(iterator.next());
+			
+		} 	
+		        if (person.getFname().equals(name)) {
+		        	
+			        System.out.println("\n Enter the number for editing: ");
+			        System.out.println(" 1: Last name /n 2: Address /n 3: City /n 4: State /n 5: Phone_no /n 6: Zip ");
+			        int option = sc.nextInt();
+			        switch (option) {
+			        
 			        case 1:
 			        	System.out.println("Enter the lastname");
 			            String lname = sc.next();
@@ -105,12 +110,42 @@ public class contact_Person extends address_Book{
 			        	int zip = sc.nextInt();                                
 			        	person.setZip(zip);                               
 			        	break;
-			        	}   
-		
-			        arr[i] = person;
+			        	
+			        }
+		        
 		        }
-		   
+		        
+		        else {
+		        	System.out.println("Person not found");	
+		        }
+
+		//System.out.println(list);
+	}
+	
+	
+	void delete() {
+	
+		address_Book person = list.get(i);           
+        
+		System.out.println("Enter the first name of the person: ");
+        String name = sc.next();                
+        
+        Iterator iterator = list.iterator();			
+		
+		while (iterator.hasNext()) {
+			iterator.next();	
 		}
+		
+        if (person.getFname().equals(name)) {  	
+        	
+        	person = list.get(i);
+        	list.remove(person);
+        	
+        }else {        	
+        	
+        	System.out.println("Person not found");        	
+        }
+        System.out.println(list);
 	}
                 
 
